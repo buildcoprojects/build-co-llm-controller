@@ -14,11 +14,7 @@ export default function ClientBody({
   }, []);
 
   return (
-<<<<<<< HEAD
     <body className="antialiased bg-background text-foreground" suppressHydrationWarning>
-=======
-    <body className="antialiased" suppressHydrationWarning>
->>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
       {children}
     </body>
   );
