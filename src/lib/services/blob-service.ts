@@ -1,4 +1,4 @@
-import { put, get, list, append } from '@netlify/blobs';
+import { put, get } from '@netlify/blobs';
 
 const SIGNALS_PATH = 'data/signals.json';
 const CHAT_HISTORY_PREFIX = 'chat-history/';
@@ -21,7 +21,9 @@ export async function readSignalsBlob() {
   const txt = await res.text();
   try {
     return JSON.parse(txt);
-  } catch { return []; }
+  } catch {
+    return [];
+  }
 }
 
 export async function appendSignal(payload: any) {
@@ -51,7 +53,9 @@ export async function readChatHistory(sessionId: string) {
   const txt = await res.text();
   try {
     return JSON.parse(txt);
-  } catch { return []; }
+  } catch {
+    return [];
+  }
 }
 
 export async function appendChatMessage(sessionId: string, msg: any) {

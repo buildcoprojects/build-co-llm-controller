@@ -1,27 +1,6 @@
 [build]
-  command = "bun install && bun run build"
+  command = "npm run build"
   publish = ".next"
-
-[build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "false"
-
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-
-[images]
-  remote_images = [
-    "https://same-assets.com/*",
-    "https://source.unsplash.com/.*",
-    "https://images.unsplash.com/.*",
-    "https://ext.same-assets.com/.*",
-    "https://ugc.same-assets.com/.*"
-  ]
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Explicitly enable Netlify Blobs for serverless functions
-[blobs]
-  [blobs.signals]
-    store = "signals"

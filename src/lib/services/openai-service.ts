@@ -1,14 +1,13 @@
-<<<<<<< HEAD
 import { OpenAIResponse } from '../types';
+import OpenAI from 'openai';
+
+const openai = new OpenAI();
 
 export async function classifySignal(
   text: string,
   metadata?: Record<string, unknown>
 ): Promise<OpenAIResponse> {
   try {
-    // In a real implementation, this would make an API call to OpenAI
-    // For demo purposes, we'll simulate a response
-
     if (!text) {
       return {
         success: false,
@@ -17,17 +16,13 @@ export async function classifySignal(
       };
     }
 
-    // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    // Simple classification logic for the mock
     let classification = 'STANDARD';
     let confidenceScore = 0.75;
     let analysis = 'Standard signal with no special characteristics detected.';
 
     const textLower = text.toLowerCase();
-
-    // Very basic classifier for demo purposes
     if (textLower.includes('urgent') || textLower.includes('important') || textLower.includes('critical')) {
       classification = 'HIGH_PRIORITY';
       confidenceScore = 0.92;
@@ -70,9 +65,6 @@ export async function analyzeArtefact(
   contentSummary: string
 ): Promise<OpenAIResponse> {
   try {
-    // In a real implementation, this would make an API call to OpenAI
-    // For demo purposes, we'll simulate a response
-
     if (!fileName || !contentSummary) {
       return {
         success: false,
@@ -81,10 +73,8 @@ export async function analyzeArtefact(
       };
     }
 
-    // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1200));
 
-    // Generate a mock analysis based on file extension
     const fileExt = fileName.split('.').pop()?.toLowerCase();
     let classification = 'STANDARD';
     let confidenceScore = 0.8;
@@ -103,7 +93,6 @@ export async function analyzeArtefact(
       analysis = 'JSON data file detected, containing structured data.';
     }
 
-    // Check content summary for keywords
     const summaryLower = contentSummary.toLowerCase();
     if (summaryLower.includes('password') || summaryLower.includes('secret') || summaryLower.includes('key')) {
       classification = 'HIGH_RISK';
@@ -128,13 +117,15 @@ export async function analyzeArtefact(
       error: error instanceof Error ? error.message : 'Unknown error',
     };
   }
-=======
-import OpenAI from 'openai';
+}
 
-const openai = new OpenAI();
-
-export async function streamChatCompletion({ messages, systemPrompt }: { messages: any[]; systemPrompt?: string }) {
-  // See https://platform.openai.com/docs/api-reference/chat/create
+export async function streamChatCompletion({
+  messages,
+  systemPrompt
+}: {
+  messages: any[];
+  systemPrompt?: string;
+}) {
   const stream = await openai.chat.completions.create({
     model: 'gpt-4o',
     stream: true,
@@ -146,5 +137,4 @@ export async function streamChatCompletion({ messages, systemPrompt }: { message
     temperature: 0.5,
   });
   return stream;
->>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
 }

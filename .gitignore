@@ -64,3 +64,6 @@ next-env.d.ts
 # optional broader ignore if needed
 .env
 .env.*
+
+# Local Netlify folder
+.netlify
