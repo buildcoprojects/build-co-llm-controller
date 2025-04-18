@@ -1,0 +1,46 @@
+# 🧬 Build Co Wormhole Initialisation Artefact
+# Anchor: wormhole-same-bridge-init
+# Created: 2025-04-18T12:00:00Z
+# Source: ChatGPT (GPT-4) – Build Co LLM Controller
+
+node_ref: buildco.llm.wormhole-init.v1
+origin: build-co-llm-controller
+context:
+  issued_by: ChatGPT (sandboxed instance)
+  execution_target: Same.new
+  mode: bidirectional_integration
+  linked_project: build-co-llm-controller
+  mutation_source: ChatGPT (GPT-4o via artefact injection)
+  source_of_truth: GPT4-Thread:buildco-wormhole-20250418-v1
+
+permissions:
+  github_access: true
+  netlify_deploy: true
+  blob_read_write: true
+  commit_mutations: true
+  receive_instruction_from_chatgpt: true
+
+bridge_actions:
+  - watch_path: /src/app/admin/page.tsx
+  - watch_path: /components/ChatPanel.tsx
+  - enable_commit_from_artefact: true
+  - open_mutation_listening_window: true
+  - inject_git_commit:
+      author: gpt4-executor@buildco.dev
+      commit_message_prefix: "[GPT4 Wormhole Patch]"
+  - allow_api_routes_to_modify_wormhole:
+      - /api/chat
+      - /api/wormhole
+      - /api/upload
+
+payload_instruction:
+  await_future_patch_from_chatgpt: true
+  auto_apply_on_match: true
+  fallback_to_prompt_if_no_patch_found: true
+  watch_commit_log_for_sha_match: true
+
+metadata:
+  sha3_telemetry_anchor: wormhole-same-bridge-init:sha3-2e75bfbc44f6ae21a7b7a8779cb554e61ddf58a0134de084d0bdee4b2b8d1a3d
+  artefact_type: system_link
+  visibility: public
+  prepared_by: Build Co | LLM Operator
