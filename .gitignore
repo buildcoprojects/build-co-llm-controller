@@ -56,3 +56,5 @@ next-env.d.ts
 .vscode
 =======
 >>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
+
+.env*.local
