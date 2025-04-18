@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { OpenAIResponse } from '../types';
 
 export async function classifySignal(
@@ -127,4 +128,23 @@ export async function analyzeArtefact(
       error: error instanceof Error ? error.message : 'Unknown error',
     };
   }
+=======
+import OpenAI from 'openai';
+
+const openai = new OpenAI();
+
+export async function streamChatCompletion({ messages, systemPrompt }: { messages: any[]; systemPrompt?: string }) {
+  // See https://platform.openai.com/docs/api-reference/chat/create
+  const stream = await openai.chat.completions.create({
+    model: 'gpt-4o',
+    stream: true,
+    messages: [
+      ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
+      ...messages,
+    ],
+    max_tokens: 4096,
+    temperature: 0.5,
+  });
+  return stream;
+>>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
 }

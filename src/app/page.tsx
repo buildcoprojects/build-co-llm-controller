@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Layout } from "@/components/layout";
 import { SignalForm } from "@/components/signal-form";
 
@@ -15,4 +16,8 @@ export default function Home() {
       </div>
     </Layout>
   );
+=======
+export default function Home() {
+  return <></>;
+>>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
 }

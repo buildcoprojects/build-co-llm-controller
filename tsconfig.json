@@ -32,9 +32,14 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+<<<<<<< HEAD
     "build/types/**/*.ts",
     "next-env.d.ts",
     "out/types/**/*.ts"
+=======
+    "next-env.d.ts",
+    "build/types/**/*.ts"
+>>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
   ],
   "exclude": [
     "node_modules"
