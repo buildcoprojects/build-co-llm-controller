@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "format": "bunx biome format --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -24,44 +24,26 @@
     "@radix-ui/react-switch": "^1.1.4",
     "@radix-ui/react-tabs": "^1.1.4",
     "@radix-ui/react-toast": "^1.2.7",
-=======
-    "dev": "next dev -H 0.0.0.0 --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "bunx biome lint --write && bunx tsc --noEmit",
-    "format": "bunx biome format --write"
-  },
-  "dependencies": {
->>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.0.17",
     "lucide-react": "^0.475.0",
     "next": "^15.2.0",
-<<<<<<< HEAD
     "next-themes": "^0.4.6",
     "openai": "^4.95.0",
+    "pdf-parse": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.55.0",
-    "stripe": "^18.0.0",
-    "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.3"
-=======
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7",
-    "openai": "4.20.0",
-    "@netlify/blobs": "1.5.0",
-    "pdf-parse": "^1.1.1",
-    "framer-motion": "^11.0.17",
     "react-markdown": "^9.0.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.0",
+    "stripe": "^18.0.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^2.9.1",
     "uuid": "^9.0.0",
-    "usehooks-ts": "^2.9.1"
->>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -37,10 +37,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-<<<<<<< HEAD
   trailingSlash: true,
-=======
->>>>>>> 09fbac6 (Phase 1: Rebuild /api, Blob, Admin ChatPanel, artefact bridge logic (no artefact or legacy blob overwrite))
 };
 
 module.exports = nextConfig;
