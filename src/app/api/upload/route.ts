@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({
     status: 'success',
     file: {
-      url: `/api/blob/${filePath}`,
+      url: `https://freightnode-api.netlify.app/api/blob/${filePath}`,
       name: file.name,
       mimetype: file.type,
       ...(pdfExtractedText && { extractedText: pdfExtractedText })
