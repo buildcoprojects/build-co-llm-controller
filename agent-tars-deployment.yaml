@@ -1,0 +1,42 @@
+agent:
+  name: Agent-TARS
+  version: v1.0.0-alpha.6
+  provider: Hugging Face
+
+vlm:
+  base_url: "https://agent-tars-vlm.us-east-1.aws.endpoints.huggingface.cloud"
+  api_key: "${HUGGINGFACE_API_KEY}"  # Netlify will inject this at build/runtime
+  model_name: "Agent-TARS-v1.0.0-alpha.6"
+
+interface:
+  language: "English"
+  chat_enabled: true
+  file_upload: true
+  markdown_streaming: true
+  persistent_log: true
+
+routes:
+  chat: "/api/chat"
+  signal_form: "/api/signal"
+  admin_panel: "/admin"
+
+storage:
+  report_base_url: "https://your-report-storage-endpoint.com/upload"
+  utio_base_url: "https://your-utio-endpoint.com/collect"
+
+security:
+  access_level: "tier-0"
+  telemetry_enabled: true
+  blob_logging: true
+
+metadata:
+  deployment_timestamp: "2025-04-20T02:00:00Z"
+  node: "freightnode.buildcoprojects.com.au"
+  artefact_tracking: true
+  default_llm: "DeepSeek"
+  fallback_llm: "OpenAI"
+
+notes:
+  - "Ensure HUGGINGFACE_API_KEY is injected securely."
+  - "Adjust endpoint URLs if running behind a proxy or CI/CD wrapper."
+  - "Enable or disable blob logging via 'blob_logging' flag."
