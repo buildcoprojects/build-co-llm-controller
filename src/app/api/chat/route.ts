@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Stream } from 'openai/streaming'; // You may need to adjust import
 import { OpenAI } from 'openai';
 import { blobService } from '@/lib/services/blob-service';
 
@@ -93,7 +92,7 @@ export async function POST(req: NextRequest) {
     let assistantContent = '';
 
     // Create a web stream for chunked reply
-    const { readable, writable } = new Stream();
+    const { readable, writable } = new TransformStream();
     (async () => {
       const writer = writable.getWriter();
       for await (const chunk of stream) {
