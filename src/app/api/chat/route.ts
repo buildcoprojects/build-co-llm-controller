@@ -83,8 +83,11 @@ export async function POST(req: NextRequest) {
     const messages = [
       { role: 'system', content: systemPrompt },
       ...(injectPdfText ? [{ role: 'system', content: injectPdfText }] : []),
-      ...context,
-      { role: 'user', content: message }
+    ...context,
+    {
+      role: 'user',
+      content: typeof message === 'string' ? message : JSON.stringify(message)
+    }
     ];
 
     // Prepare streaming response
