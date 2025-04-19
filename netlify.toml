@@ -1,0 +1,31 @@
+[build]
+  command = "bun install && bun run build"
+  publish = ".next"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[images]
+  remote_images = ["https://same-assets.com/*"]
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Explicitly enable Netlify Blobs for serverless functions
+[blobs]
+  [blobs.signals]
+    store = "signals"
+
+# Function routes mapping
+[[redirects]]
+  from = "/api/create-checkout-session"
+  to = "/.netlify/functions/create-checkout-session"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/wormhole"
+  to = "/.netlify/functions/process-signal"
+  status = 200
+  force = true
