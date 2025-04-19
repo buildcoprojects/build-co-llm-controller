@@ -126,6 +126,46 @@ export const blobService = {
   },
 
   /**
+   * Store a standalone report (JSON or plain text) in Blob storage
+   */
+  async storeReport(reportId: string, reportContent: any, contentType = 'application/json') {
+    if (!reportId || !reportContent) {
+      console.error('Missing report ID or content');
+      return { success: false, error: 'Missing report ID or content' };
+    }
+
+    try {
+      const store = this.getSignalsStore();
+      const reportKey = `reports/${reportId}`;
+
+      const content =
+        typeof reportContent === 'object'
+          ? JSON.stringify(reportContent, null, 2)
+          : String(reportContent);
+
+      const metadata = {
+        contentType,
+        reportId,
+        timestamp: new Date().toISOString()
+      };
+
+      await store.set(reportKey, Buffer.from(content), { metadata });
+
+      return {
+        success: true,
+        reportKey,
+        metadata
+      };
+    } catch (error) {
+      console.error('Failed to store report:', error);
+      return {
+        success: false,
+        error: error.message
+      };
+    }
+  },
+
+  /**
    * Store an artifact binary (PDF, etc.) in Blob storage
    */
   async storeArtifact(artifactName, artifactContent, contentType = 'application/pdf') {

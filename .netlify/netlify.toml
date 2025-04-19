@@ -1,0 +1,35 @@
+functionsDirectory = "/Volumes/500GB_SSD/Github/build-co-llm-controller/netlify/functions"
+functionsDirectoryOrigin = "ui"
+headers = []
+redirects = []
+
+[build]
+publish = "/Volumes/500GB_SSD/Github/build-co-llm-controller/.next"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npm run build"
+functions = "/Volumes/500GB_SSD/Github/build-co-llm-controller/netlify/functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[functions]
+
+[functions."*"]
+
+[[plugins]]
+origin = "config"
+package = "@netlify/plugin-nextjs"
+
+[plugins.inputs]
