@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { blobService } from '@/lib/services/blob-service';
-import * as pdfParse from 'pdf-parse';
+
+// Dynamically import pdf-parse instead of using static import to avoid build-time errors
 
 const ALLOWED_TYPES = [
   'application/pdf',
@@ -39,6 +40,8 @@ export async function POST(req: NextRequest) {
   // If PDF, extract text
   if (file.type === 'application/pdf') {
     try {
+      // Dynamically import pdf-parse to avoid build-time errors
+      const pdfParse = await import('pdf-parse').then(module => module.default || module);
       const pdfData = await pdfParse(buffer);
       pdfExtractedText = pdfData.text;
       // Save extracted text as separate blob
@@ -46,7 +49,9 @@ export async function POST(req: NextRequest) {
       const store = blobService.getSignalsStore();
       await store.set(pdfTextPath, pdfExtractedText, { metadata: { contentType: 'text/plain' } });
     } catch (err) {
-      return NextResponse.json({ status: 'error', message: 'PDF parsing failed', detail: err?.message }, { status: 500 });
+      console.error('PDF parsing error:', err);
+      // Continue even if PDF parsing fails, just without extracted text
+      pdfExtractedText = 'PDF text extraction failed. File was uploaded but content could not be parsed.';
     }
   }
 
