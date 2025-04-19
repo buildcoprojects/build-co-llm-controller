@@ -16,6 +16,7 @@
 [blobs]
   [blobs.signals]
     store = "signals"
+    key = "events"
 
 # Function routes mapping
 [[redirects]]
