@@ -2,7 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { OpenAI } from 'openai';
 import { blobService } from '@/lib/services/blob-service';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const useDeepseek = process.env.DEFAULT_LLM === 'deepseek';
+const openai = useDeepseek
+  ? new OpenAI({
+      apiKey: process.env.DEEPSEEK_API_KEY,
+      baseURL: 'https://api.deepseek.com/v1', // or correct DeepSeek endpoint
+    })
+  : new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
 
 const WORMHOLE_BRIDGE_COMMAND = {
   command: 'diagnose',
